@@ -1,0 +1,70 @@
+#多环境配置
+#方式一:在单个yml配置多环境,在多个环境下使用“---” 分隔不同环境
+#---
+#  spring:
+#    #部署环境
+#    profiles: public
+#
+#---
+#  spring:
+#    #测试环境
+#    Profiles: tet
+#---
+#选择激活的环境
+#spring:
+#  profiles:
+#    active: test
+
+#方式二:可以使用多个yml文件分开配置不同环境
+#多个yml命名约定：application-xxx.yml,active属性指定文件配置的后缀 即xxx
+#spring:
+#  profiles:
+#   active: dev
+
+#
+#
+#spring:
+#  # 数据源信息配置
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver #mysql 6.0以後的配置
+#
+#    url: jdbc:mysql://localhost:3306/tank_world?serverTimezone=GMT&SetUnicode=true&characterEncoding=utf-8
+#    username: root
+#    password:
+#
+#    配置连接池属性（Hikari）
+#    druid:
+#      #最大连接池数量
+#      max-active: 1000
+#      #      初始化时连接物理的连接个数
+#      initial-size: 10
+#      #      获取连接时的最大等待时间
+#      max-wait: 1000
+#      #      最小连接池数量
+#      min-idle: 10
+#      #      如果连接空闲时间大于等于minEvictabledleTimeMills则关闭物理连接
+#      time-between-eviction-runs-millis: 60000
+#      #      连接保持空闲二不被驱逐的最小时间
+#      min-evictable-idle-time-millis: 300000
+#      #      检测拦截有效性
+#      validation-query: select 1
+#      test-while-idle: true
+#      test-on-borrow: false
+#      test-on-return: false
+#      pool-prepared-statements: false
+
+#mybatis配置
+
+#配置需要加载的yml文件
+spring:
+ profiles:
+  include: dev,web,redis
+ #active: dev,web
+  #include: dev,redis #包含文件
+
+# 实现security自定义用户和密码配置
+# security:
+#  user:
+#   name: huh
+#   password: 123
+#   roles: admin

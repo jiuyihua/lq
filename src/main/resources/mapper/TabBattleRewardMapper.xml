@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ <mapper namespace="com.trade.lq.dao.TabBattleRewardMapper">
+
+    <resultMap id="TabBRewardMap" type="com.trade.lq.entity.TabBattleReward">
+        <id property="id" column="id"></id>
+        <result property="rate" column="rate"></result>
+        <result property="rewardBoy" column="reward_boy"></result>
+        <result property="rewardGirl" column="reward_girl"></result>
+        <result property="rewardId" column="reward_id"></result>
+        <result property="type" column="type"></result>
+    </resultMap>
+
+    <select id="getListTabBattle"  resultMap="TabBRewardMap" >
+            SELECT reward_boy, reward_girl, rate, type, id FROM tab_battle_reward
+    </select>
+    <select id="findPage"  resultMap="TabBRewardMap" >
+            SELECT * FROM tab_battle_reward
+    </select>
+
+
+
+ </mapper>

@@ -1,0 +1,35 @@
+#spring:
+#  #开发环境
+#  #profiles: dev
+#  # 方法一：值绑定
+#  #在java里面配置为@Value(value = "${user.username}}")
+#  # 方法二：松散绑定
+#  #在java里面配置为@ConfigurationProperties(prefix = "user")
+#user:
+#  #值绑定
+#  userName: lq-username
+#  age: 19
+#  #  #绑定集合
+#  #  #方式一：使用逗号进行分隔
+#  tels: 13895647892,13697748562
+#  #  #方式二：使用-进行分隔
+#  #  #tels:
+#  #   # -45662312313212
+#  #   # -45662312313219
+#  #
+#  #绑定map或者properties
+#  #方式一：单行配置
+#  scores: {chinese: 95, english: 90}
+#
+#  #复杂类型
+#  malls:
+#    - productName: 王者荣耀
+#      procuctId: 91
+#      productServer: 9区
+#      productSystem: 安卓微信
+#
+#    - productName: 王者荣耀
+#      procuctId: 92
+#      productServer: 91区
+#      productSystem: 苹果微信
+#

@@ -1,0 +1,45 @@
+#spring:
+#  # 数据源信息配置
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/tanka_world?serverTimezone=GMT&SetUnicode=true&characterEncoding=utf-8
+#    username: root
+#    password:
+#
+#    配置连接池属性（Hikari）
+#    druid:
+#
+#      active-connections:
+#      #最大连接池数量
+#      max-active: 1000
+##      初始化时连接物理的连接个数
+#      initial-size: 10
+##      获取连接时的最大等待时间
+#      max-wait: 1000
+##      最小连接池数量
+#      min-idle: 10
+##      如果连接空闲时间大于等于minEvictabledleTimeMills则关闭物理连接
+#      time-between-eviction-runs-millis: 60000
+##      连接保持空闲二不被驱逐的最小时间
+#      min-evictable-idle-time-millis: 300000
+##      检测拦截有效性
+#      validation-query: select 1
+#      test-while-idle: true
+#      test-on-borrow: false
+#      test-on-return: false
+#      pool-prepared-statements: false
+#
+#
+##    hikari:
+##      #最小的空闲连接
+##      minimum-idle: 5
+###      最大连接数
+##      maximum-pool-size: 20
+###      最大空闲时长
+##      idle-timeout: 900000
+###      获取连接超时的时间
+##      connection-timeout: 15000
+###      心跳检查连接的有效性
+##      connection-test-query: select 1
+#
+## 配置druid连接池属性

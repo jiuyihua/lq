@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trade.lq.dao.TtUserMapper">
+    <resultMap id="UserBaseResultMap" type="com.trade.lq.entity.TtUser">
+        <id column="id" property="id"  />
+        <result column="name" property="name" />
+    </resultMap>
+
+    <select id="GetTtUserList" resultType="com.trade.lq.entity.TtUser" >
+        select * from tt_user;
+    </select>
+    <insert id="addTtUser" parameterType="com.trade.lq.entity.TtUser">
+        INSERT INTO tt_user(id,name ) VALUE(#{id},#{name});
+    </insert>
+    <select id="findUser" parameterType="com.trade.lq.entity.TtUser" resultType="com.trade.lq.entity.TtUser">
+        select * from tt_user where  id = #{id}
+    </select>
+    <update id="updateTtUser" parameterType="com.trade.lq.entity.TtUser">
+        update tt_user set name = #{name} where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <delete id="delTtUser" parameterType="com.trade.lq.entity.TtUser">
+        delete from  tt_user where id = #{id}
+    </delete>
+
+
+</mapper>

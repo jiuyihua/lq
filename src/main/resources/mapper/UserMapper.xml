@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trade.lq.dao.UserMapper">
+
+    <!--<resultMap id="BaseResultMap" type="com.example.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
+        <result column="realName" jdbcType="VARCHAR" property="realName" />
+    </resultMap>-->
+    <resultMap id="BaseResultMap" type="com.trade.lq.entity.User">
+        <result column="id" property="id" />
+        <result column="userName" property="userName" />
+        <result column="passWord" property="passWord" />
+        <result column="realName" property="realName" />
+        <result column="enable" property="enable"/>
+        <result column="locked" property="locked"/>
+    </resultMap>
+
+    <select id="Sel" resultType="com.trade.lq.entity.User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="getUserByUserName" resultType="com.trade.lq.entity.User">
+        select * from user where userName = #{userName}
+    </select>
+    <select id="getUserRolesByUid" resultType="com.trade.lq.entity.Role">
+        select * from role r,user_role ur where r.id = ur.rid and ur.uid=#{uid}
+    </select>
+
+    <!--<insert id="regUser" parameterMap="com.trade.lq.entity.User">
+
+/*insert into user (userName, `passWord`, realName, enabled, locked) values ("ll",'ll','ll',1,0);
+*/      /*  insert into User (userName, passWord, realName, enabled, locked)
+        values ( #{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR},
+        #{realName,jdbcType=VARCHAR},#{enable,jdbcType=tinyint},#{locked,jdbcType=tinyint})
+       */  insert into User (userName, passWord, realName, enabled, locked)
+        values ( #{userName}, #{passWord},
+        #{realName},#{enable},#{locked});
+    </insert>-->
+    <!--
+        <insert id="insertSelective" parameterType="com.example.entity.User">
+            insert into User
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="userid != null">
+                    userId,
+                </if>
+                <if test="username != null">
+                    userName,
+                </if>
+                <if test="phone != null">
+                    phone,
+                </if>
+                <if test="sex != null">
+                    sex,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="userid != null">
+                    #{userid,jdbcType=INTEGER},
+                </if>
+                <if test="username != null">
+                    #{username,jdbcType=VARCHAR},
+                </if>
+                <if test="phone != null">
+                    #{phone,jdbcType=VARCHAR},
+                </if>
+                <if test="sex != null">
+                    #{sex,jdbcType=VARCHAR},
+                </if>
+            </trim>
+        </insert>
+
+        <select id="findAllUser" resultType="com.example.entity.User">
+            select * from User
+        </select>-->
+<!--
+     1. id （必须配置）
+       id是命名空间中的唯一标识符，可被用来代表这条语句。
+       一个命名空间（namespace） 对应一个dao接口,
+       这个id也应该对应dao里面的某个方法（相当于方法的实现），因此id 应该与方法名一致 &ndash;&gt;
+
+    id="insertUser"
+
+    2. parameterType （可选配置, 默认为mybatis自动选择处理）
+      将要传入语句的参数的完全限定类名或别名， 如果不配置，mybatis会通过ParameterHandler 根据参数类型默认选择合适的typeHandler进行处理
+      parameterType 主要指定参数类型，可以是int, short, long, string等类型，也可以是复杂类型（如对象） &ndash;&gt;
+
+    parameterType="com.demo.User"
+
+    3. flushCache （可选配置，默认配置为true）
+      将其设置为 true，任何时候只要语句被调用，都会导致本地缓存和二级缓存都会被清空，默认值：true（对应插入、更新和删除语句） &ndash;&gt;
+
+    flushCache="true"
+
+     4. statementType （可选配置，默认配置为PREPARED）
+      STATEMENT，PREPARED 或 CALLABLE 的一个。这会让 MyBatis 分别使用 Statement，PreparedStatement 或 CallableStatement，默认值：PREPARED。 &ndash;&gt;
+
+    statementType="PREPARED"
+
+    5. keyProperty (可选配置， 默认为unset)
+      （仅对 insert 和 update 有用）唯一标记一个属性，MyBatis 会通过 getGeneratedKeys 的返回值或者通过 insert 语句的 selectKey 子元素设置它的键值，默认：unset。如果希望得到多个生成的列，也可以是逗号分隔的属性名称列表。 &ndash;&gt;
+
+    keyProperty=""
+
+     6. keyColumn     (可选配置)
+      （仅对 insert 和 update 有用）通过生成的键值设置表中的列名，这个设置仅在某些数据库（像 PostgreSQL）是必须的，当主键列不是表中的第一列的时候需要设置。如果希望得到多个生成的列，也可以是逗号分隔的属性名称列表。 &ndash;&gt;
+
+    keyColumn=""
+
+    7. useGeneratedKeys (可选配置， 默认为false)
+      （仅对 insert 和 update 有用）这会令 MyBatis 使用 JDBC 的 getGeneratedKeys 方法来取出由数据库内部生成的主键（比如：像 MySQL 和 SQL Server 这样的关系数据库管理系统的自动递增字段），默认值：false。  &ndash;&gt;
+
+    useGeneratedKeys="false"
+
+    8. timeout  (可选配置， 默认为unset, 依赖驱动)
+      这个设置是在抛出异常之前，驱动程序等待数据库返回请求结果的秒数。默认值为 unset（依赖驱动）。 -->
+</mapper>

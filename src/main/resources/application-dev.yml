@@ -1,0 +1,218 @@
+#spring:
+#  #开发环境
+#  #profiles: dev
+#  # 方法一：值绑定
+#  #在java里面配置为@Value(value = "${user.username}}")
+#  # 方法二：松散绑定
+#  #在java里面配置为@ConfigurationProperties(prefix = "user")
+#user:
+#  #值绑定
+#  userName: lq-username
+#  age: 91
+#  #  #绑定集合
+#  #  #方式一：使用逗号进行分隔
+#  tels: 13895647892,13697748562
+#  #  #方式二：使用-进行分隔
+#  #  #tels:
+#  #   # -45662312313212
+#  #   # -45662312313219
+#  #
+#  #绑定map或者properties
+#  #方式一：单行配置
+#  scores: {chinese: 95, english: 90}
+#
+#  #复杂类型
+#  malls:
+#    - productName: 和平精英
+#      procuctId: 91
+#      productServer: 9区
+#      productSystem: 安卓微信
+#
+#    - productName: 和平精英
+#      procuctId: 92
+#      productServer: 91区
+#      productSystem: 苹果微信
+#
+#
+#server:
+#  port: 8080
+#
+#spring:
+#  datasource:
+#    username: root
+#    password:
+#    url: jdbc:mysql://localhost:3306/tank_world?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+#    driver-class-name: com.mysql.jdbc.Driver
+#
+#
+#    #  配置连接池属性（druid）
+#    druid:
+#      #最大连接池数量
+#      max-active: 1000
+#      #      初始化时连接物理的连接个数
+#      initial-size: 10
+#      #      获取连接时的最大等待时间
+#      max-wait: 1000
+#      #      最小连接池数量
+#      min-idle: 10
+#      #      如果连接空闲时间大于等于minEvictabledleTimeMills则关闭物理连接
+#      time-between-eviction-runs-millis: 60000
+#      #      连接保持空闲二不被驱逐的最小时间
+#      min-evictable-idle-time-millis: 300000
+#      #      检测拦截有效性
+#      validation-query: select 1
+#
+#mybatis:
+#  mapper-locations: classpath:mapper/*Mapper.xml
+#  type-aliases-package: com.trade.lq.entity
+#
+##showSql
+#logging:
+#  level:
+#    com:
+#      example:
+#        mapper : debug
+
+#上传文件的目录
+uploadDir: F:\sbootDoc\resource\
+
+
+server:
+  port: 8089
+
+  jackson:
+    date-format: yyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+#  error:
+#    #是否禁用默认错误页面
+#    whitelabel:
+#      enabled: true
+#    path: /myerror
+
+
+
+
+
+spring:
+
+  servlet:
+    multipart:
+    #项目的上下文路径
+      #context-path: /lq
+      #每个文件的大小
+      max-file-size: 10MB
+      #上传一次总文件大小
+      max-request-size: 100MB
+      enabled: true
+
+
+
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/myapp?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    #  配置连接池属性（druid）
+    druid:
+      #最大连接池数量
+      max-active: 1000
+      #      初始化时连接物理的连接个数
+      initial-size: 10
+      #      获取连接时的最大等待时间
+      max-wait: 1000
+      #      最小连接池数量
+      min-idle: 10
+      #      如果连接空闲时间大于等于minEvictabledleTimeMills则关闭物理连接
+      time-between-eviction-runs-millis: 60000
+      #      连接保持空闲二不被驱逐的最小时间
+      min-evictable-idle-time-millis: 300000
+      #      检测拦截有效性
+      validation-query: select 1
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+
+
+
+
+#        #每个文件的大小
+#      max-file-size: 10MB
+#
+#      max-request-size: 100MB
+
+
+
+
+#      encoding:
+#        force: true #是否响应
+#        charset: UTF-8
+#        enabled: true #字符过滤器
+
+
+
+
+
+
+
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.trade.lq.entity
+
+
+
+
+pagehelper:
+  #数据库方言
+  helper-dialect: mysql
+  #分页合理化
+  reasonable: true
+  #使用注解分页参数
+  support-methods-arguments: true
+  params: count=countSql
+
+#showSql
+logging:
+  file:
+    name: mylogback.log
+   # path: /
+#  pattern:
+#    console: %d{-yyyy-MM-dd HH:mm:ss}
+#    file: %d{-yyyy-MM-dd HH:mm:ss}
+  level:
+    com.trade.lq.dao: debug
+
+
+#  #指定控制台的日志输出格式
+#  logging.pattern.console = %d{yyyY-MM-dd HH:mm:ss} %-5p %C -%m%n
+#    # 指定日志文件中的输入格式
+#  logging.partern.file = %d{yyyy-MM-dd HH:mm:ss} %-5p %c - 5m%n
+#    # 将日志输出到指定文件中
+#  logging.file.name = redis.log
+#    # 指定日志输出级别
+#  logging.level.root = info
+#
+#
+#
+#  自定义log配置文件
+#  按照spring约定命名的log文件名、spring会自动发现者这些log配置文件
+#  logbak-spring.xml logback.xml log4j.xml log4j-spring.xml
+#  如果自定义额日志文件名，那可以通过logging.config属性来指定
+#  logging.config = classpath:mylogback.xml
+
+#shiro配置
+#shiro:
+#  enabled: true
+#  web:
+#    enabled: true
+#  loginUrl: /login
+#  successUrl: /index
+#  unauthorizedUrl: /unauthorized
+#  sessionManager:
+#    sessionIdCookieEnabled: true
+#    sessionIdUrlRewritingEnabled: true

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trade.lq.dao.ResourceMapper">
+    <resultMap id="BaseResourceResultMap" type="com.trade.lq.entity.Resource">
+        <id column="id" property="id" />
+        <result column="pattern" property="pattern"/>
+        <collection property="roles" ofType="com.trade.lq.entity.Role">
+            <id property="id" column="id"/>
+            <result column="name" property="name"/>
+            <result column="nameZh" property="nameZh"/>
+        </collection>
+    </resultMap>
+    <select id="getAllResource" resultMap="BaseResourceResultMap">
+        SELECT m.*,r.id AS rid,r.name AS rname,r.nameZh AS rnameZh FROM resource m LEFT JOIN resource_role mr ON m.id=mr.resourceId LEFT JOIN role r ON mr.rid=r.id
+        /*SELECT m.*,r.id AS rid,r.name AS rname,r.nameZh AS rnameZh FROM resource m LEFT JOIN resource_role mr ON m.'id'=mr.'resourceId' LEFT JOIN role r ON mr.'rid'=r.'id'*/
+    </select>
+    <resultMap id="BaseRoleResultMap" type="com.trade.lq.entity.Role">
+            <id property="id" column="id"/>
+            <result column="name" property="name"/>
+            <result column="nameZh" property="nameZh"/>
+    </resultMap>
+    <select id="getRoleByResource" resultMap="BaseRoleResultMap">
+        select * from role where id in(SELECT rid FROM resource_role where resourceId = #{resourceId});
+
+    </select>
+</mapper>
